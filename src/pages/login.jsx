@@ -7,7 +7,9 @@ export default function Login(){
     const navigate=useNavigate();
     const[email,setEmail]=useState('');
     const[pw,setPw]=useState('');
+    const [loading,setLoading ]=useState(false);
     function handleSubmit(e){
+        setLoading(true)
         e.preventDefault();
         axios.post('http://localhost:3000/api/user/login',{
             email:email,
@@ -16,12 +18,14 @@ export default function Login(){
             console.log(res.data);
             const user=res.data.user;
             localStorage.setItem('token',res.data.token);
-            if(user.role==="admin"){
+            if(user.role==="Admin"){
                navigate('/admin/dashboard');
                 toast.success("Login Successfull");
+                setLoading(false)
             }else{
                 navigate('/');
                 toast.error("Login error");
+                setLoading(false)
             }
                 
     })
@@ -40,7 +44,7 @@ export default function Login(){
               <h1>Login Screen</h1>
               <input type="text" placeholder="Enter email" onChange={e=>setEmail(e.target.value)} name="email" className='m-5 border border-white w-[300px] p-3 rounded-2xl'/>
               <input type="password" placeholder="Enter password"onChange={e=>setPw(e.target.value)}name="pw" className='m-5 border border-white w-[300px] p-3 rounded-2xl'/>
-              <button onClick={handleSubmit}className='m-5 bg-blue-500 w-[300px] p-3 rounded-2xl text-white hover:bg-white hover:text-blue-500'>Submit</button>
+              <button onClick={handleSubmit}className='m-5 bg-blue-500 w-[300px] p-3 rounded-2xl text-white hover:bg-white hover:text-blue-500'>{loading?<span className="loading loading-bars loading-xs"></span>:"Submit"}</button>
               </form>
               </div>
             </div>

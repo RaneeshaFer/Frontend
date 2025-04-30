@@ -10,6 +10,8 @@ import Settings from './pages/Settings'
 import News from './pages/News'
 import AdminPage from './pages/admin/adminPage'
 import StudentDetails from './pages/admin/studentDetails'
+import EditStudent from './pages/admin/editStudent'
+
 
 function App() {
 
@@ -27,6 +29,7 @@ function App() {
     <Route path='/news' element={<News/>}/>
     <Route path='/admin/*' element={<AdminPage/>}/>
     <Route path='/student/StudentDetails' element={<StudentDetails/>}/>
+    <Route path='/student/editStudent' element={<EditStudent/>}/>	
    </Routes>
    </BrowserRouter>
     

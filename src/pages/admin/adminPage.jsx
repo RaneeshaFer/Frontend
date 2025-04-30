@@ -7,6 +7,7 @@ import Appoinments from './Appoinments'
 import Student from './Student'
 import { ToastContainer } from 'react-toastify'
 import StudentDetails from './studentDetails'
+import EditStudent from './editStudent'
 
 export default function AdminPage() {
   return (
@@ -33,6 +34,8 @@ export default function AdminPage() {
           <Route path='/orders' element={<Orders/>}/>
           <Route path='/appoinments' element={<Appoinments/>}/>
           <Route path='/student' element={<Student/>}/>
+          <Route path='/student/editStudent' element={<EditStudent/>}/>
+          
           
           </Routes>
           
