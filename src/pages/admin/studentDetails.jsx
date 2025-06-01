@@ -2,11 +2,14 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { ToastContainer } from 'react-toastify';
+import uploadImage from './utils/mediaUploads';
+
 
 export default function StudentDetails() {
   const navigate=useNavigate();
-  // const[sid,setSid]=useState('');
+  const[image,setImage]=useState('');
+  const[imageUrl,setImageUrl]=useState('')
+    // const[sid,setSid]=useState('');
   const[sname,setSname]=useState('');
   const[age,setAge]=useState(0);
   const[dob,setDob]=useState('');
@@ -14,11 +17,19 @@ export default function StudentDetails() {
   async function handleSubmit(e){
     
     e.preventDefault();
+    const promises=[];
+    for(let i=0;i<image.length;i++){
+      const promise=uploadImage(image[i]);
+      promises.push(promise);
+    }
+    const imageUrl=await Promise.all(promises);
+    setImageUrl(imageUrl)
     const stData={
       // sid:sid,
       sname:sname,
       age:age,
-      dob:dob
+      dob:dob,
+      image:imageUrl
     }
     
     const res=await axios.post('http://localhost:3000/api/student',stData,{
@@ -35,6 +46,11 @@ export default function StudentDetails() {
           <h2 className="text-2xl font-bold mb-6 text-center text-gray-700">Add Student</h2>
           
           <form className="space-y-4" onSubmit={handleSubmit}>
+            {/* Student Image */}
+        <div>
+          <label className="block text-gray-600 mb-1">Student Image</label>
+          <input type="file" onChange={(e) => setImage(e.target.files)} />
+        </div>
             {/* Student ID */}
             {/* <div>
               <label className="block text-gray-600 mb-1">Student ID</label>
@@ -53,6 +69,7 @@ export default function StudentDetails() {
       
             {/* Student Name */}
             <div>
+              {/*<input type='file' onChange={(e)=>{setImage(e.target.files)}}/>*/}
               <label className="block text-gray-600 mb-1" >Student Name</label>
               <input
                 id="sname"
