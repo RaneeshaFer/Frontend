@@ -5,13 +5,10 @@ import Login from './pages/login'
 import Gallery from './pages/Gallery'
 import {ToastContainer} from 'react-toastify'
 import Register from './pages/Register'
-
 import Settings from './pages/Settings'
 import News from './pages/News'
 import AdminPage from './pages/admin/adminPage'
 import Logout from './pages/Logout'
-
-
 
 function App() {
 
@@ -23,7 +20,6 @@ function App() {
     <Route path='/' element={<Home/>}/>
     <Route path='/login' element={<Login/>}/>
    <Route path='/register' element={<Register/>}/>
-    
     <Route path='/settings' element={<Settings/>}/>
     <Route path='/gallery' element={<Gallery/>}/>
     <Route path='/news' element={<News/>}/>

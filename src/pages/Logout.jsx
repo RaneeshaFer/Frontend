@@ -1,5 +1,3 @@
-// src/pages/Logout.jsx
-
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -20,11 +18,5 @@ export default function Logout() {
     }, 1000);
   }, [navigate]);
 
-  return (
-    <div className="w-full h-screen flex justify-center items-center bg-gray-100">
-      <div className="text-center text-gray-700 text-xl">
-        Logging you out...
-      </div>
-    </div>
-  );
+ 
 }

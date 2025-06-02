@@ -20,7 +20,6 @@ import Dashboard from './dashboard';
 
 export default function AdminPage() {
   const navigate = useNavigate();
-
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/login');
@@ -29,12 +28,9 @@ export default function AdminPage() {
   return (
     <div className='w-full h-screen flex'>
       <ToastContainer />
-      
       {/* Sidebar */}
       <div className='w-[300px] h-full 	bg-blue-300 p-6'>
         <div className='flex flex-col gap-5 mt-10'>
-        
-
           <Link to="/admin/dashboard" className='px-4 py-2 rounded-xl hover:bg-white hover:text-blue-500  font-bold text-blue-700'>Dashboard</Link> 
           <Link to="/admin/student" className='px-4 py-2 rounded-xl hover:bg-white hover:text-blue-500 font-bold text-blue-700'>Student</Link>
           <Link to="/admin/customer" className='px-4 py-2 rounded-xl hover:bg-white hover:text-blue-500 font-bold text-blue-700'>Customer</Link>
