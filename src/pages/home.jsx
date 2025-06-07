@@ -1,4 +1,4 @@
-import Benefits from "../componets/Benefits";
+{/*import Benefits from "../componets/Benefits";
 import ICT from "../componets/ICT";
 import Image from "../componets/image";
 import Navbar from "../componets/navbar";
@@ -19,4 +19,4 @@ export default function Home(){
         </div>
         </>
     )
-}
+}*/}
