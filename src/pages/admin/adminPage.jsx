@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import Customer from './Customer';
 import Items from './Items';
 import Orders from './Orders';
-import Student from './student';
+import Student from './Student';
 import StudentDetails from './studentDetails';
 import EditStudent from './editStudent';
 import CustomerDetails from './customerDetails';
