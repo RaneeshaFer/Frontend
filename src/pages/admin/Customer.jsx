@@ -13,7 +13,7 @@ export default function Customer() {
     useEffect(() => {
         const fetchCustomer = async () => {
             try {
-                const res = await axios.get('http://localhost:3000/api/customer');
+                const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/customer`);
                 setCustomer(res.data);
             } catch (error) {
                 toast.error(error.message);
@@ -23,7 +23,7 @@ export default function Customer() {
     }, []);
     function handleDelete(cid){
       if(window.confirm("Are you sure you want to delete this customer?")){
-        axios.delete(`http://localhost:3000/api/customer/${cid}`,{headers:{Authorization:"Bearer "+localStorage.getItem('token')}}).then((res)=>{
+        axios.delete(`${import.meta.env.VITE_BASE_URL}/api/customer/${cid}`,{headers:{Authorization:"Bearer "+localStorage.getItem('token')}}).then((res)=>{
           toast.success(res.data.msg);
           setCustomer(customer.filter((c)=>c.cid!==cid));
         }).catch((error)=>{

@@ -26,7 +26,7 @@ export default function EditStudent() {
       const imageUrl=await Promise.all(promises);
       setImageUrl(imageUrl)
     try {
-      const result=axios.put(`http://localhost:3000/api/student/${location.state.sid}`,
+      const result=axios.put(`${import.meta.env.VITE_BASE_URL}/api/student/${location.state.sid}`,
       {sname,age,dob,image: imageUrl[0]},
       {headers:{Authorization:"Bearer "+localStorage.getItem('token')}});
       

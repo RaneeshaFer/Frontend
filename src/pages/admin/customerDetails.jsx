@@ -35,7 +35,7 @@ export default function CustomerDetails() {
           image: imageUrl
         }
     
-       const res= await axios.post('http://localhost:3000/api/customer', customerData, {
+       const res= await axios.post(`${import.meta.env.VITE_BASE_URL}/api/customer`, customerData, {
           headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
         })
         .then((res) => {

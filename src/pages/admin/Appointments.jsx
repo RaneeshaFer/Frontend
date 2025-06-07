@@ -11,7 +11,7 @@ export default function Appointment() {
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const res = await axios.get('http://localhost:3000/api/appointment');
+        const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/appointment`);
         setAppointments(res.data);
       } catch (error) {
         toast.error(error.message);
@@ -22,7 +22,7 @@ export default function Appointment() {
 
   function handleDelete(aid) {
     if (window.confirm("Are you sure you want to delete this appointment?")) {
-      axios.delete(`http://localhost:3000/api/appointment/${aid}`, {headers: {Authorization: "Bearer " + localStorage.getItem('token')}}).then((res) => {
+      axios.delete(`${import.meta.env.VITE_BASE_URL}/api/appointment/${aid}`, {headers: {Authorization: "Bearer " + localStorage.getItem('token')}}).then((res) => {
         toast.success(res.data.msg);
         setAppointments(appointments.filter((a) => a.aid !== aid));
       }).catch((error) => {

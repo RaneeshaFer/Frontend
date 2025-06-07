@@ -12,13 +12,13 @@ export default function AddOrder() {
   const [itemid, setItemid] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/customer')
+    axios.get(`${import.meta.env.VITE_BASE_URL}/api/customer`)
       .then(res => setCustomer(res.data))
       .catch(err => toast.error("Failed to load customers"));
   }, []);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/item')
+    axios.get(`${import.meta.env.VITE_BASE_URL}/api/item`)
       .then(res => setItem(res.data))
       .catch(err => toast.error("Failed to load items"));
   }, []);

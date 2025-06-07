@@ -11,7 +11,7 @@ export default function AddAppointment() {
   const [details, setDetails] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/customer')
+    axios.get(`${import.meta.env.VITE_BASE_URL}/api/customer`)
       .then(res => setCustomer(res.data))
       .catch(err => toast.error("Failed to load customers"));
   }, []);
@@ -25,7 +25,7 @@ export default function AddAppointment() {
       details:details
     };
 
-    const res= await axios.post('http://localhost:3000/api/appointment', appointmentsData, {
+    const res= await axios.post(`${import.meta.env.VITE_BASE_URL}/api/appointment`, appointmentsData, {
       headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
     }).then((res) => {
       toast.success(res.data);

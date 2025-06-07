@@ -22,7 +22,7 @@ export default function Order() {
 
   function handleDelete(oid) {
     if (window.confirm("Are you sure you want to delete this order?")) {
-      axios.delete(`http://localhost:3000/api/order/${oid}`, {headers: { Authorization: "Bearer " + localStorage.getItem('token') }}).then((res) => {
+      axios.delete(`${import.meta.env.VITE_BASE_URL}/api/order/${oid}`, {headers: { Authorization: "Bearer " + localStorage.getItem('token') }}).then((res) => {
         toast.success(res.data.msg);
         setOrders(orders.filter((o) => o.oid !== oid));
       }).catch((error) => {

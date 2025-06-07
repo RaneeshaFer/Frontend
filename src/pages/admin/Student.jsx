@@ -13,7 +13,7 @@ export default function Student() {
     useEffect(()=>{
         const fetchStudent=async()=>{
             try{
-                const res=await axios.get('http://localhost:3000/api/student');
+                const res=await axios.get(`${import.meta.env.VITE_BASE_URL}/api/student`);
                 console.log(res.data);
                 setStudent(res.data);
                 console.log(student);
@@ -27,7 +27,7 @@ export default function Student() {
     },[]);
     function handleDelete(sid){
       if(window.confirm("Are you sure you want to delete this student?")){
-        axios.delete(`http://localhost:3000/api/student/${sid}`,{headers:{Authorization:"Bearer "+localStorage.getItem('token')}}).then((res)=>{
+        axios.delete(`${import.meta.env.VITE_BASE_URL}/api/student/${sid}`,{headers:{Authorization:"Bearer "+localStorage.getItem('token')}}).then((res)=>{
           toast.success(res.data.msg);
           setStudent(student.filter((s)=>s.sid!==sid));
         }).catch((error)=>{

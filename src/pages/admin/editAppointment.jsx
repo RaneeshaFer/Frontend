@@ -12,7 +12,7 @@ export default function EditAppointment() {
   const [customer,setCustomer ] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/customer')
+    axios.get(`${import.meta.env.VITE_BASE_URL}/api/customer`)
       .then(res => setCustomer(res.data))
       .catch(err => toast.error("Failed to load customers"));
   }, []);
@@ -21,7 +21,7 @@ export default function EditAppointment() {
     e.preventDefault();
 
     try {
-      const result = await axios.put(`http://localhost:3000/api/appointment/${location.state.aid}`,
+      const result = await axios.put(`${import.meta.env.VITE_BASE_URL}/api/appointment/${location.state.aid}`,
         { cid, adate, details },
         {headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}});
       toast.success(result.data);

@@ -26,7 +26,7 @@ export default function ItemDetails() {
       image: imageUrl
     };
 
-    await axios.post('http://localhost:3000/api/item', itemData, {
+    await axios.post(`${import.meta.env.VITE_BASE_URL}/api/item`, itemData, {
       headers: { Authorization: "Bearer " + localStorage.getItem('token') }
     }).then((res)=>{
       

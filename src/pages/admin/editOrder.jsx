@@ -15,11 +15,11 @@ export default function EditOrder() {
 
   // Load customers and items for dropdowns
   useEffect(() => {
-    axios.get('http://localhost:3000/api/customer')
+    axios.get(`${import.meta.env.VITE_BASE_URL}/api/customer`)
       .then(res => setCustomers(res.data))
       .catch(() => toast.error("Failed to load customers"));
 
-    axios.get('http://localhost:3000/api/item')
+    axios.get(`${import.meta.env.VITE_BASE_URL}/api/item`)
       .then(res => setItems(res.data))
       .catch(() => toast.error("Failed to load items"));
   }, []);
@@ -29,7 +29,7 @@ export default function EditOrder() {
 
     try {
       const result = await axios.put(
-        `http://localhost:3000/api/order/${location.state.oid}`,
+        `${import.meta.env.VITE_BASE_URL}/api/order/${location.state.oid}`,
         { cid, itemid, orderdate },
         { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } }
       );

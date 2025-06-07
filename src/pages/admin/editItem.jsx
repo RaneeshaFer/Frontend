@@ -25,7 +25,7 @@ export default function EditItem() {
     setImageUrl(uploaded);
 
     try {
-      const result = await axios.put(`http://localhost:3000/api/item/${location.state.itemid}`,
+      const result = await axios.put(`${import.meta.env.VITE_BASE_URL}/api/item/${location.state.itemid}`,
         {
           iname,
           price,

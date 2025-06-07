@@ -11,7 +11,7 @@ export default function Login(){
     function handleSubmit(e){
         setLoading(true)
         e.preventDefault();
-        axios.post('http://localhost:3000/api/user/login',{
+        axios.post(`${import.meta.env.VITE_BASE_URL}/api/user/login`,{
             email:email,
             password:pw
         }).then((res)=>{

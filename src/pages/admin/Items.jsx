@@ -23,7 +23,7 @@ export default function Item() {
 
   function handleDelete(itemid) {
     if (window.confirm("Are you sure you want to delete this item?")) {
-      axios.delete(`http://localhost:3000/api/item/${itemid}`, {headers: { Authorization: "Bearer " + localStorage.getItem('token') }}).then((res) => {
+      axios.delete(`${import.meta.env.VITE_BASE_URL}/api/item/${itemid}`, {headers: { Authorization: "Bearer " + localStorage.getItem('token') }}).then((res) => {
         toast.success(res.data.msg);
         setItems(items.filter((item) => item.itemid !== itemid));
       }).catch((error) => {

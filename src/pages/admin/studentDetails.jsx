@@ -32,7 +32,7 @@ export default function StudentDetails() {
       image:imageUrl
     }
     
-    const res=await axios.post('http://localhost:3000/api/student',stData,{
+    const res=await axios.post(`${import.meta.env.VITE_BASE_URL}/api/student`,stData,{
       headers:{Authorization:"Bearer "+localStorage.getItem('token')}
     }).then((res)=>{
       
