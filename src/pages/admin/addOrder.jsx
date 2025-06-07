@@ -32,7 +32,7 @@ export default function AddOrder() {
     };
 
     
-        const res= await axios.post('http://localhost:3000/api/order', orderData, {
+        const res= await axios.post(`${import.meta.env.VITE_BASE_URL}/api/order`, orderData, {
             headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
           }).then((res) => {
             toast.success(res.data);

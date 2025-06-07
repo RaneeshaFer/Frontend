@@ -11,7 +11,7 @@ export default function Order() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await axios.get('http://localhost:3000/api/order');
+        const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/order`);
         setOrders(res.data);
       } catch (error) {
         toast.error(error.message);

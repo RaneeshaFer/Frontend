@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import Customer from './Customer';
 import Items from './Items';
 import Orders from './Orders';
-import Student from './Student';
+;
 import StudentDetails from './studentDetails';
 import EditStudent from './editStudent';
 import CustomerDetails from './customerDetails';
@@ -17,6 +17,7 @@ import EditItem from './editItem';
 import AddOrder from './addOrder';
 import EditOrder from './editOrder';
 import Dashboard from './dashboard';
+import Student from './Student';
 
 export default function AdminPage() {
   const navigate = useNavigate();
